@@ -10,7 +10,10 @@ namespace AddressBookManagementwithAdo
             
 
             AddressRepo repo = new AddressRepo();
-            
+            //UC1
+            repo.DataBaseConnection();
+
+
 
 
         }
