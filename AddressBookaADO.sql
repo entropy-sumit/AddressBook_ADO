@@ -9,10 +9,16 @@ PhoneNumber varchar(21),
 Address varchar(255),
 City varchar(50),
 State varchar(50),
-ZipCode int,
+ZipCode varchar(24),
 Email varchar(255)
 );
 select * from AddressBookTables
+
+
+insert into AddressBookTables(FirstName,LastName,PhoneNumber,Address,City,State,ZipCode,Email)
+values('Sum','Raw','78787889','hapyind','mumbai','maharastra','256451','sumraw@gmail.com')
+
+
 
 
 

@@ -7,11 +7,15 @@ namespace AddressBookManagementwithAdo
         static void Main(string[] args)
         {
             Console.WriteLine("welcome to address book");
-            
-
+           
             AddressRepo repo = new AddressRepo();
             //UC1
-            repo.DataBaseConnection();
+            //repo.DataBaseConnection();
+
+            //UC2
+            repo.GetAllContact();
+
+            
 
 
 
