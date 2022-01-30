@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 
@@ -83,6 +84,44 @@ namespace AddressBookManagementwithAdo
                 connection.Close(); 
             }
 
+        }
+        public bool AddDataToTable(AddressBookModel model)
+        {
+            try
+            {
+                using (connection) 
+                {
+                    SqlCommand command = new SqlCommand("[dbo].[AddressBookSystemProcedure]", connection);
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@FirstName", model.FirstName);
+                    command.Parameters.AddWithValue("@LastName", model.LastName);
+                    command.Parameters.AddWithValue("@Address", model.Address);
+                    command.Parameters.AddWithValue("@City", model.City);
+                    command.Parameters.AddWithValue("@State", model.State);
+                    command.Parameters.AddWithValue("@ZipCode", model.ZipCode);
+                    command.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
+                    command.Parameters.AddWithValue("@Email", model.Email);
+                  
+
+                    connection.Open();
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+
+                    if (result != 0)   
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }
