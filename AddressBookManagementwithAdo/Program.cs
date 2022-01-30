@@ -27,7 +27,10 @@ namespace AddressBookManagementwithAdo
             //repo.AddDataToTable(addressBookModel);
 
             //uc4
-            Console.WriteLine(repo.EditContactUsingName("442207", "ShayamalDas", "chanchal") ? "Update Record successfully\n" : "Update failed");
+            //Console.WriteLine(repo.EditContactUsingName("442207", "ShayamalDas", "chanchal") ? "Update Record successfully\n" : "Update failed");
+
+            //uc5
+            Console.WriteLine(repo.DeleteContactUsingName("ShayamalDas", "chanchal") ? "Record Deleted successfully\n" : "Delete failed");
 
 
 
