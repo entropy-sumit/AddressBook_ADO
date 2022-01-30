@@ -158,5 +158,38 @@ namespace AddressBookManagementwithAdo
                 this.connection.Close();
             }
         }
+        public bool DeleteContactUsingName(string FirstName, string LastName)
+        {
+            try
+            {
+                using (connection)
+                {
+                    connection.Open();
+                    string query = "delete from AddressBookTables where FirstName = @parameter1 and LastName =@parameter2";
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    command.Parameters.AddWithValue("@parameter1", FirstName);
+                    command.Parameters.AddWithValue("@parameter2", LastName);
+
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+                    if (result > 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
     }
 }
