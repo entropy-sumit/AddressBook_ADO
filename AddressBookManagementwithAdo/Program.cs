@@ -24,9 +24,12 @@ namespace AddressBookManagementwithAdo
             //repo.GetAllContact();
 
             //uc3
-            repo.AddDataToTable(addressBookModel);
+            //repo.AddDataToTable(addressBookModel);
 
-            
+            //uc4
+            Console.WriteLine(repo.EditContactUsingName("442207", "ShayamalDas", "chanchal") ? "Update Record successfully\n" : "Update failed");
+
+
 
 
 

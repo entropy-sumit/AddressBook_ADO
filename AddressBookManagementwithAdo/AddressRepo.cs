@@ -123,5 +123,40 @@ namespace AddressBookManagementwithAdo
                 connection.Close();
             }
         }
+        public bool EditContactUsingName(string ZipCode, string FirstName, string LastName)
+        {
+
+            try
+            {
+                using (this.connection)
+                {
+                    connection.Open();
+                    string query = @"update AddressBookTables set ZipCode = @parameter1
+                    where FirstName = @parameter2 and LastName = @parameter3";
+
+                    SqlCommand command = new SqlCommand(query, this.connection);
+                    command.Parameters.AddWithValue("@parameter1", ZipCode);
+                    command.Parameters.AddWithValue("@parameter2", FirstName);
+                    command.Parameters.AddWithValue("@parameter3", LastName);
+
+                    var result = command.ExecuteNonQuery();
+                    connection.Close();
+                    if (result > 0)
+                    {
+                        return true;
+                    }
+                    return false;
+                }
+            }
+
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                this.connection.Close();
+            }
+        }
     }
 }
